@@ -2,8 +2,25 @@ import React, { Component } from 'react'
 
 export default class NewAppointment extends Component {
   state = {
-
+    appointment: {
+      petname: '',
+      petowner: '',
+      date: '',
+      time: '',
+      synthoms: ''
+    }
   }
+  handleChange = e => {
+    // overwrite appointment state
+    // console.log(`${e.target.name}: ${e.target.value}`);
+    this.setState({
+      appointment: {
+        ...this.state.appointment,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
   render() {
     return (
       <div className="card mt-5 py-5">
@@ -20,6 +37,8 @@ export default class NewAppointment extends Component {
                 className="form-control"
                 placeholder="pet name"
                 name="petname"
+                onChange={this.handleChange}
+                value={this.state.appointment.petname}
                 />
               </div>
             </div>
@@ -31,6 +50,8 @@ export default class NewAppointment extends Component {
                 className="form-control"
                 placeholder="pet owner"
                 name="petowner"
+                onChange={this.handleChange}
+                value={this.state.appointment.petowner}
                 />
               </div>
             </div>
@@ -41,6 +62,8 @@ export default class NewAppointment extends Component {
                 type="date"
                 className="form-control"
                 name="date"
+                onChange={this.handleChange}
+                value={this.state.appointment.date}
                 />
               </div>
               <label className="col-sm-4 col-lg-2 col-form-label">Hora</label>
@@ -49,6 +72,8 @@ export default class NewAppointment extends Component {
                 type="time"
                 className="form-control"
                 name="time"
+                onChange={this.handleChange}
+                value={this.state.appointment.time}
                 />
               </div>
             </div>
@@ -56,9 +81,11 @@ export default class NewAppointment extends Component {
               <label className="col-sm-4 col-lg-2 col-form-label">Synthoms</label>
               <div className="col-sm-8 col-lg-10">
               <textarea 
-                  className="form-control"
-                  placeholder="Describe the synthoms"
-                  name="synthoms"
+                className="form-control"
+                placeholder="Describe the synthoms"
+                name="synthoms"
+                onChange={this.handleChange}
+                value={this.state.appointment.synthoms}
                 ></textarea>
               </div>
             </div>
