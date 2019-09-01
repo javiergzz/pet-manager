@@ -8,7 +8,8 @@ export default class NewAppointment extends Component {
       date: '',
       time: '',
       synthoms: ''
-    }
+    },
+    error: false
   }
   handleChange = e => {
     // overwrite appointment state
@@ -21,6 +22,19 @@ export default class NewAppointment extends Component {
     })
   }
 
+  handleSubmit = e => {
+    e.preventDefault();
+    // extract data from state
+    const { petname, petowner, date, time, synthoms } = this.state.appointment;
+    // validate that is not empty fields
+    if(petname === '' || petowner === '' || date === '' || time === '' || synthoms === ''){
+      this.setState({ error: true });
+      // stop 
+      return;
+    }
+    // Agregar la cita al state de app
+  }
+
   render() {
     return (
       <div className="card mt-5 py-5">
@@ -28,7 +42,9 @@ export default class NewAppointment extends Component {
           <h2 className="card-title text-center mb-5">
             Create a new appointment
           </h2>
-          <form>
+          <form
+            onSubmit={this.handleSubmit}
+          >
             <div className="form-group row">
               <label className="col-sm-4 col-lg-2 col-form-label">Pet Name</label>
               <div className="col-sm-8 col-lg-10">
