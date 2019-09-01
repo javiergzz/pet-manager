@@ -16,3 +16,7 @@ header {
 header h1 {
   color: white;
 }
+
+.col-form-label {
+  font-size: 12px;
+}
