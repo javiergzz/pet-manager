@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid';
 
 export default class NewAppointment extends Component {
   state = {
@@ -32,6 +33,10 @@ export default class NewAppointment extends Component {
       // stop 
       return;
     }
+    //  create new object with data
+    const newAppointment = {...this.state.appointment};
+    newAppointment.id = uuid();
+    this.props.createNewAppoinment(newAppointment);
     // Agregar la cita al state de app
   }
 
