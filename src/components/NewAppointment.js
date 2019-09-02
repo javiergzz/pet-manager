@@ -90,7 +90,7 @@ class NewAppointment extends Component {
               </div>
             </div>
             <div className="form-group row">
-              <label className="col-sm-4 col-lg-2 col-form-label">Fecha</label>
+              <label className="col-sm-4 col-lg-2 col-form-label">Date</label>
               <div className="col-sm-8 col-lg-4">
                 <input 
                 type="date"
@@ -100,7 +100,7 @@ class NewAppointment extends Component {
                 value={this.state.appointment.date}
                 />
               </div>
-              <label className="col-sm-4 col-lg-2 col-form-label">Hora</label>
+              <label className="col-sm-4 col-lg-2 col-form-label">Time</label>
               <div className="col-sm-8 col-lg-4">
                 <input 
                 type="time"
