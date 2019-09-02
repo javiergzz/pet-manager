@@ -9,6 +9,21 @@ class App extends Component {
     appointments: []
   }
 
+  // when app loads
+  componentDidMount(){
+    const appointmentsLS = localStorage.getItem('appointments');
+    if(appointmentsLS){
+      this.setState({
+        appointments: JSON.parse(appointmentsLS)
+      });
+    }
+  }
+
+  // when actions add or delete a new appointment
+  componentDidUpdate(){
+    localStorage.setItem('appointments', JSON.stringify(this.state.appointments));
+  }
+
   createNewAppoinment = (appointment) => {
     // copy current state
     const appointments = [...this.state.appointments, appointment];
