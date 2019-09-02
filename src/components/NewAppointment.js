@@ -68,7 +68,7 @@ export default class NewAppointment extends Component {
                 <input 
                 type="text"
                 className="form-control"
-                placeholder="pet name"
+                placeholder="Pet name"
                 name="petname"
                 onChange={this.handleChange}
                 value={this.state.appointment.petname}
@@ -81,7 +81,7 @@ export default class NewAppointment extends Component {
                 <input 
                 type="text"
                 className="form-control"
-                placeholder="pet owner"
+                placeholder="Pet owner"
                 name="petowner"
                 onChange={this.handleChange}
                 value={this.state.appointment.petowner}
