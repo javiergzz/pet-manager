@@ -15,6 +15,18 @@ class App extends Component {
     // add new state
     this.setState({ appointments: appointments });
   }
+
+  // delete appointment from state
+  deleteAppointment = appointment_id => {
+    // copy state
+    const currentState = [...this.state.appointments];
+    // then use filter to remove the element @appointment_id from appointments
+    const appointments = currentState.filter(appointment => appointment.id !== appointment_id);
+    // update state
+    this.setState({
+      appointments: appointments
+    });
+  }
   
   render() {
     return (
@@ -31,6 +43,7 @@ class App extends Component {
           <div className="mt-5 col-md-10 mx-auto">
             <AppointmentList
               appointments={this.state.appointments}
+              deleteAppointment={this.deleteAppointment}
             />
           </div>
         </div>
