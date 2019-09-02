@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
+const initialState = {
+  appointment: {
+    petname: '',
+    petowner: '',
+    date: '',
+    time: '',
+    synthoms: ''
+  },
+  error: false
+};
 export default class NewAppointment extends Component {
-  state = {
-    appointment: {
-      petname: '',
-      petowner: '',
-      date: '',
-      time: '',
-      synthoms: ''
-    },
-    error: false
-  }
+  state = { ...initialState }
   handleChange = e => {
     // overwrite appointment state
     // console.log(`${e.target.name}: ${e.target.value}`);
@@ -36,8 +37,12 @@ export default class NewAppointment extends Component {
     //  create new object with data
     const newAppointment = {...this.state.appointment};
     newAppointment.id = uuid();
+    // add appointment to app state
     this.props.createNewAppoinment(newAppointment);
-    // Agregar la cita al state de app
+    // reset to initial state
+    this.setState({
+      ...initialState
+    });
   }
 
   render() {
