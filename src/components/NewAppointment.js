@@ -41,12 +41,19 @@ export default class NewAppointment extends Component {
   }
 
   render() {
+    // extract state value
+    const { error } = this.state;
     return (
       <div className="card mt-5 py-5">
         <div className="card-body">
           <h2 className="card-title text-center mb-5">
             Create a new appointment
           </h2>
+
+          { error ? <div className="alert alert-danger mt-2 mb-5">
+            All fields are required
+          </div> : null }
+
           <form
             onSubmit={this.handleSubmit}
           >
